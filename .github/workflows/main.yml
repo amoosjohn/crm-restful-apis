@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [14.x]
         
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -72,12 +72,12 @@ jobs:
             context: ./
             file: ./Dockerfile
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs-demo:latest
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/crm-restful-apis:latest
           
         - name: Run the image in a container
           uses: addnab/docker-run-action@v3
           with:
-            image: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs-demo:latest
+            image: ${{ secrets.DOCKERHUB_USERNAME }}/crm-restful-apis:latest
             run: |
               echo "runing the docker image"
               echo "Testing the nodejs  app endpoints"

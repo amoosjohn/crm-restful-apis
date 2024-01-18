@@ -1,18 +1,34 @@
 {
-  "name": "crm",
+  "name": "crm-restful-apis",
   "version": "1.0.0",
+  "author": "Amoos Ghori",
   "description": "rest api with mongodb",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js --exec babel-node"
+    "start": "nodemon ./index.js --exec babel-node",
+    "test": "jest",
+    "build": "echo Test build succeed! No Package uploaded!"
   },
-  "author": "Amoos Ghori",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amoosjohn/crm-restful-apis"
+  },
+  "bugs": {
+    "url": "https://github.com/amoosjohn/crm-restful-apis/issues"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "nodejs",
+    "crm-restful-apis"
+  ],
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "nodemon": "^3.0.2"
