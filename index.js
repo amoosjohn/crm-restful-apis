@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import routes from './src/routes/crmRoutes';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 4000;
 
 //moongoose connection
 mongoose.Promise = global.Promise;
@@ -14,6 +14,11 @@ mongoose.connect(process.env.DB_URI, {
     useNewUrlParser:true
 });
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+});
 //bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
