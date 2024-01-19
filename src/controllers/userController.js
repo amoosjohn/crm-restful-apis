@@ -5,7 +5,7 @@ import {UserSchema} from '../models/userModel';
 
 const User = mongoose.model("User", UserSchema);
 
-export const loginRequired = (req, res, next) => {
+export const verifyToken = (req, res, next) => {
     if(req.user){
         next();
     } else { 
@@ -40,11 +40,15 @@ export const login = (req, res) => {
             if(!user.comparePassword(req.body.password, user.password)) {
                 res.status(401).json({ 'message': 'Authentication failed. wrong password.' });
             } else {
-                return res.json({token: jwt.sign({ _id: user._id, username: user.username, email: user.email }, process.env.JWT_SECRET)});
+                return res.json({token: jwt.sign({ _id: user._id, username: user.username, email: user.email }, process.env.JWT_SECRET,{expiresIn: process.env.JWT_EXPIRES})});
             }
         }
 
     }).catch((err) => {
         throw err;
     });
+}
+
+export const logout = (req, res) => {
+    //logout
 }

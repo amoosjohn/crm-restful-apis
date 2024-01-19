@@ -15,7 +15,7 @@ export const addNewContact = (req, res) => {
 };
 
 export const getContacts = (req, res) => {
-    let contacts =  Contact.find();
+    let contacts =  Contact.find().sort({created_date: 'desc'});
 
     contacts.then((contact) => {
         res.json(contact);
